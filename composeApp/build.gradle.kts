@@ -14,10 +14,8 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
     compilerOptions {
         freeCompilerArgs.add("-Xexpect-actual-classes")
-        freeCompilerArgs.add("-Xbinary=bundleId=AwesomeChat")
     }
 
 }

@@ -1,7 +1,7 @@
 package `fun`.awesome.chat.presentation
 
 
-sealed class State<out T>: ChatState<T> {
+sealed class State<out T>: ChatListState<T>, ChatDetailedState<T> {
 
     data class Success<out T>(val data: T): State<T>()
 
@@ -10,7 +10,14 @@ sealed class State<out T>: ChatState<T> {
     data object Loading: State<Nothing>()
 }
 
-sealed interface ChatState<out T> {
-    data object EmptyChats: ChatState<Nothing>
+sealed interface ChatListState<out T> {
+    data object EmptyChats: ChatListState<Nothing>
 }
+
+sealed interface ChatDetailedState<out T> {
+    data object EmptyChat: ChatDetailedState<Nothing>
+
+}
+
+
 

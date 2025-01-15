@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import dev.gitlive.firebase.FirebaseApp
 import `fun`.awesome.chat.data.PlatformConfiguration
 import `fun`.awesome.chat.data.startDI
 import `fun`.awesome.chat.presentation.ui.App

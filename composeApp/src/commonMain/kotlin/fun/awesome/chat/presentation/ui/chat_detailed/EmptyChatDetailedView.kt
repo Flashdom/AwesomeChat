@@ -23,7 +23,7 @@ import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
-fun EmptyChatDetailedView() {
+fun EmptyChatDetailedView(onSendMessageClick: (String) -> Unit) {
     Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         Column(modifier = Modifier.wrapContentSize().weight(10f), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Image(painter = painterResource(Res.drawable.robot), contentDescription = null)
@@ -32,7 +32,7 @@ fun EmptyChatDetailedView() {
         }
         Column(modifier = Modifier.wrapContentSize()) {
             MessageInputView(onSendClick = {
-
+                onSendMessageClick(it)
             })
         }
     }

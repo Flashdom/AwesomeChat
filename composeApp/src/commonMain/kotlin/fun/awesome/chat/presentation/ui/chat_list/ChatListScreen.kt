@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import `fun`.awesome.chat.domain.models.Chat
-import `fun`.awesome.chat.presentation.ChatState
+import `fun`.awesome.chat.presentation.ChatListState
 import `fun`.awesome.chat.presentation.State
 import `fun`.awesome.chat.presentation.ui.ErrorView
 import `fun`.awesome.chat.presentation.ui.LoadingView
@@ -32,7 +32,7 @@ fun ChatListScreen(chatListViewModel: ChatListViewModel = koinInject()) {
             ChatListView(uiState.data)
         }
 
-        ChatState.EmptyChats ->  {
+        ChatListState.EmptyChats ->  {
             ChatEmptyListView()
         }
     }

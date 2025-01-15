@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import `fun`.awesome.chat.domain.repositories.ChatListRepository
 import `fun`.awesome.chat.domain.models.Chat
-import `fun`.awesome.chat.presentation.ChatState
+import `fun`.awesome.chat.presentation.ChatListState
 import `fun`.awesome.chat.presentation.State
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 
 class ChatListViewModel(private val chatListRepository: ChatListRepository): ViewModel() {
 
-    private val _chatListState: MutableStateFlow<ChatState<List<Chat>>> = MutableStateFlow(State.Loading)
-    val chatListState: StateFlow<ChatState<List<Chat>>>
+    private val _chatListState: MutableStateFlow<ChatListState<List<Chat>>> = MutableStateFlow(State.Loading)
+    val chatListState: StateFlow<ChatListState<List<Chat>>>
         get() = _chatListState
 
     private val ceh = CoroutineExceptionHandler { _, throwable ->
