@@ -34,7 +34,7 @@ import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
-fun AuthView() {
+fun AuthView(onEvent: (AuthEvent) -> Unit) {
     Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -52,13 +52,30 @@ fun AuthView() {
         BasicTextField(state = TextFieldState("text"))
 
         BasicSecureTextField(state = TextFieldState())
-        TertiaryText(text = stringResource(Res.string.auth_forgot_password), modifier = Modifier.align(Alignment.End))
+        TertiaryText(
+            text = stringResource(Res.string.auth_forgot_password),
+            modifier = Modifier.align(Alignment.End)
+        )
         PrimaryButton(stringResource(Res.string.auth_login_button_text), onClick = {
+            onEvent(AuthEvent.LoginButtonClicked("", ""))
         })
-        Row(modifier = Modifier.padding(top = 24.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-            Divider(modifier = Modifier.height(1.dp).width(100.dp), color = Color(red =122, green = 128, blue = 140, alpha = 52))
-            SecondaryText(stringResource(Res.string.auth_or_login_with_text), modifier = Modifier.padding(horizontal = 16.dp))
-            Divider(modifier = Modifier.height(1.dp).width(100.dp), color = Color(red =122, green = 128, blue = 140, alpha = 52))
+        Row(
+            modifier = Modifier.padding(top = 24.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Divider(
+                modifier = Modifier.height(1.dp).width(100.dp),
+                color = Color(red = 122, green = 128, blue = 140, alpha = 52)
+            )
+            SecondaryText(
+                stringResource(Res.string.auth_or_login_with_text),
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+            Divider(
+                modifier = Modifier.height(1.dp).width(100.dp),
+                color = Color(red = 122, green = 128, blue = 140, alpha = 52)
+            )
 
         }
 
