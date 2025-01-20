@@ -34,7 +34,7 @@ class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
     // TODO make dataclass for credential
     private fun loginByCredentialStub(user: String, password: String) {
-        if (user.isBlank() and password.isBlank()) {
+        if (user.isBlank() && password.isBlank()) {
             _loginState.value = AuthState.SuccessLogging("Any data")
         } else {
             emitSideEffect(AuthSideEffect.ShowSnackbar("incorrect login or password"))
