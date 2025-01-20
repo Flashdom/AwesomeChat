@@ -1,7 +1,7 @@
 package `fun`.awesome.chat.presentation.ui.auth
 
-import androidx.compose.material.SnackbarHost
-import androidx.compose.material.SnackbarHostState
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -35,7 +35,6 @@ fun AuthScreen(viewModel: AuthViewModel = koinInject()) {
                 is AuthSideEffect.ShowSnackbar -> {
                     showSnackbar(snackbarHostState = snackbarHostState, message = sideEffect.message, )
                 }
-                else -> Unit
             }
         }
     }

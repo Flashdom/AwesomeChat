@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Send
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,18 +33,23 @@ fun MessageInputView(modifier: Modifier = Modifier, onSendClick: (String) -> Uni
     OutlinedTextField(
         singleLine = true,
         shape = RoundedCornerShape(16.dp),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
             unfocusedBorderColor = Color(
                 122,
                 128,
                 149,
                 0x52,
-            ), focusedBorderColor = Color(
+            ),
+            focusedBorderColor = Color(
                 122,
                 128,
                 149,
                 0x52,
-            ), textColor = Color.White, placeholderColor = Color(122, 128, 140, 0xFF)
+            ),
+            focusedTextColor = Color.White,
+            unfocusedTextColor = Color.White,
+            focusedPlaceholderColor = Color(122, 128, 140, 0xFF),
+            unfocusedPlaceholderColor = Color(122, 128, 140, 0xFF),
         ),
         trailingIcon = {
             IconButton(onClick = {
@@ -61,6 +66,7 @@ fun MessageInputView(modifier: Modifier = Modifier, onSendClick: (String) -> Uni
 
             }
         },
+
         modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(horizontal = 16.dp)
             .then(modifier),
         value = textState,
