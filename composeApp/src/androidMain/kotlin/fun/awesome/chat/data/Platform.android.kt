@@ -31,8 +31,10 @@ actual class PlatformConfiguration(
     val context: Context
 )
 
+/*
 @Preview
 @Composable
 fun AuthPreview() {
     AuthView()
 }
+*/
