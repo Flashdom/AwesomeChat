@@ -1,7 +1,7 @@
 package `fun`.awesome.chat.presentation.ui
 
-import androidx.compose.material.SnackbarDuration
-import androidx.compose.material.SnackbarHostState
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
 
 
 suspend fun showSnackbar(message: String, snackbarHostState: SnackbarHostState, ) {

@@ -5,14 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import awesomechat.composeapp.generated.resources.Res
-import awesomechat.composeapp.generated.resources.compose_multiplatform
 import awesomechat.composeapp.generated.resources.sad_robot
 import `fun`.awesome.chat.presentation.design_system.PrimaryText
 import `fun`.awesome.chat.presentation.design_system.SecondaryText

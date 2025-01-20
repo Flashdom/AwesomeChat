@@ -1,17 +1,14 @@
 package `fun`.awesome.chat.presentation.design_system
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,7 +32,7 @@ fun PrimaryButton(
     TextButton(
         modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(horizontal = 16.dp).then(modifier),
         shape = RoundedCornerShape(36.dp),
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color(192, 247, 166, 0xFF)),
+        colors = ButtonDefaults.buttonColors(containerColor = Color(192, 247, 166, 0xFF)),
         content = {
             when (iconPosition) {
                 IconPosition.Blank -> {
