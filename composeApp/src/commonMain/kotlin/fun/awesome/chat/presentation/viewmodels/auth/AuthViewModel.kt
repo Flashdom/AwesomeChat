@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 
 class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
 
-    private val _loginState: MutableStateFlow<AuthState<Any>> =
+    private val _loginState: MutableStateFlow<AuthState> =
         MutableStateFlow(AuthState.LoggingForm)
-    val loginState: StateFlow<AuthState<Any>>
+    val loginState: StateFlow<AuthState>
         get() = _loginState
 
     private val _sideEffects = MutableSharedFlow<AuthSideEffect>()
