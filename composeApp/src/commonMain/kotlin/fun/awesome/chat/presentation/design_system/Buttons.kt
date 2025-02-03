@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -27,52 +28,53 @@ fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    iconPosition: IconPosition = IconPosition.Blank
+    iconPosition: IconPosition = IconPosition.Blank,
+    buttonColor: Color = MaterialTheme.colorScheme.primary,
+    textColor: Color = MaterialTheme.colorScheme.onPrimary
 ) {
     TextButton(
-        modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(horizontal = 16.dp).then(modifier),
+        modifier = modifier.wrapContentHeight().padding(horizontal = 16.dp),
         shape = RoundedCornerShape(36.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = Color(192, 247, 166, 0xFF)),
+        colors = ButtonDefaults.buttonColors(containerColor = buttonColor),
         content = {
+            val textColor = textColor
             when (iconPosition) {
                 IconPosition.Blank -> {
                     Text(
                         text = text,
-                        color = Color(red = 10, green = 10, blue = 10, alpha = 0xFF),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = textColor,
                         modifier = Modifier.padding(vertical = 8.dp),
-                        fontFamily = FontFamily(
-                            Font(Res.font.SFPRODISPLAYREGULAR)
-                        ),
-                        fontSize = 16.sp,
-                        lineHeight = 20.sp
                     )
                 }
 
                 is IconPosition.End -> {
                     Text(
                         text = text,
-                        color = Color(red = 10, green = 10, blue = 10, alpha = 0xFF),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = textColor,
                         modifier = Modifier.padding(vertical = 8.dp),
-                        fontFamily = FontFamily(
-                            Font(Res.font.SFPRODISPLAYREGULAR)
-                        ),
-                        fontSize = 16.sp,
-                        lineHeight = 20.sp
                     )
-                    Icon(modifier = Modifier.size(24.dp).padding(start = 8.dp), painter = painterResource(iconPosition.drawableResource), contentDescription = null)
+                    Icon(
+                        modifier = Modifier.size(24.dp).padding(start = 8.dp),
+                        painter = painterResource(iconPosition.drawableResource),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
                 }
 
                 is IconPosition.Start -> {
-                    Icon(modifier = Modifier.size(24.dp).padding(end = 8.dp), painter = painterResource(iconPosition.drawableResource), contentDescription = null)
+                    Icon(
+                        modifier = Modifier.size(32.dp).padding(start = 8.dp, end = 8.dp),
+                        painter = painterResource(iconPosition.drawableResource),
+                        contentDescription = null,
+                        tint = Color.Unspecified
+                    )
                     Text(
                         text = text,
-                        color = Color(red = 10, green = 10, blue = 10, alpha = 0xFF),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = textColor,
                         modifier = Modifier.padding(vertical = 8.dp),
-                        fontFamily = FontFamily(
-                            Font(Res.font.SFPRODISPLAYREGULAR)
-                        ),
-                        fontSize = 16.sp,
-                        lineHeight = 20.sp
                     )
                 }
             }
