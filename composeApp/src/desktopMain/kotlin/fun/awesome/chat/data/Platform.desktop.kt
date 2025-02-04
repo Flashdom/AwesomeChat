@@ -31,5 +31,5 @@ actual class PlatformConfiguration
 @Preview
 @Composable
 fun AuthPreview() {
-    AuthView()
+    AuthView({})
 }

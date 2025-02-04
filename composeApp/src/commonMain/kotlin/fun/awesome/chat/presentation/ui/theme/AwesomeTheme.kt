@@ -17,7 +17,7 @@ fun AwesomeChatTheme(
 
     MaterialTheme(
         colorScheme = colors,
-        typography = AppTypography,
+        typography = getTypography(),
         shapes = AppShapes,
         content = content
     )
