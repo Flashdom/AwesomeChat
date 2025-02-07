@@ -1,5 +1,6 @@
 package `fun`.awesome.chat.presentation.design_system
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +33,7 @@ fun PrimaryText(text: String, modifier: Modifier = Modifier, fontSize: Int= 24, 
 @Composable
 fun SecondaryText(text: String, modifier: Modifier = Modifier) {
     Text(
-        color = Color(red = 167, green = 172, blue = 183, alpha = 0xFF),
+        color = MaterialTheme.colorScheme.onSecondary,
         text = text,
         fontSize = 16.sp,
         lineHeight = 18.sp,
@@ -44,9 +45,9 @@ fun SecondaryText(text: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TertiaryText(text: String, modifier: Modifier = Modifier) {
+fun TertiaryText(text: String, modifier: Modifier = Modifier, color: Color = MaterialTheme.colorScheme.tertiary) {
     Text(
-        color = Color(red = 192, green = 247, blue = 166, alpha = 0xFF),
+        color = color,
         text = text,
         fontSize = 14.sp,
         lineHeight = 18.sp,

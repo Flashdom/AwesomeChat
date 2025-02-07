@@ -22,7 +22,13 @@ fun getTypography(): Typography {
         bodyLarge = Typography().bodyLarge.copy(
             fontFamily = bodyFontFamily,
             fontSize = 16.sp,
-            lineHeight = 20.sp
+            lineHeight = 20.sp,
+        ),
+        labelMedium = Typography().labelMedium.copy(
+            fontFamily = bodyFontFamily,
+            fontSize = 16.sp,
+            lineHeight = 20.sp,
+            color = LightGrayColor
         )
     )
 }

@@ -4,17 +4,18 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.BasicSecureTextField
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,8 +36,14 @@ import `fun`.awesome.chat.presentation.design_system.PrimaryButton
 import `fun`.awesome.chat.presentation.design_system.PrimaryText
 import `fun`.awesome.chat.presentation.design_system.SecondaryText
 import `fun`.awesome.chat.presentation.design_system.TertiaryText
+import `fun`.awesome.chat.presentation.ui.auth.components.EmailField
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import awesomechat.composeapp.generated.resources.auth_privacy_policy
+import awesomechat.composeapp.generated.resources.auth_terms_of_use
+import `fun`.awesome.chat.presentation.ui.auth.components.PasswordField
 
 
 @Composable
@@ -47,6 +54,7 @@ fun AuthView(onEvent: (AuthEvent) -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
+        Spacer(modifier = Modifier.height(64.dp))
         Image(painter = painterResource(Res.drawable.robot), contentDescription = null)
         PrimaryText(
             text = stringResource(Res.string.auth_sign_in_header),
@@ -55,9 +63,18 @@ fun AuthView(onEvent: (AuthEvent) -> Unit) {
             lineHeight = 40
         )
         SecondaryText(text = stringResource(Res.string.auth_sign_in_content))
-        BasicTextField(state = TextFieldState("text"))
+        Spacer(modifier = Modifier.height(32.dp))
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            var email by remember { mutableStateOf("") }
+            var password by remember { mutableStateOf("") }
+            EmailField(email = email, onEmailChange = { newValue -> email = newValue })
+            Spacer(modifier = Modifier.height(16.dp))
+            PasswordField(password = password, onPasswordChange = { newValue -> password = newValue })
+        }
 
-        BasicSecureTextField(state = TextFieldState())
+        //BasicSecureTextField(state = TextFieldState()) may be change to this component later
         TertiaryText(
             text = stringResource(Res.string.auth_forgot_password),
             modifier = Modifier.align(Alignment.End)
@@ -95,7 +112,7 @@ fun AuthView(onEvent: (AuthEvent) -> Unit) {
                 onClick = { onEvent(AuthEvent.GoogleAuthClicked)},
                 iconPosition = IconPosition.Start(Res.drawable.google_logo),
                 buttonColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary
+                textColor = MaterialTheme.colorScheme.onSurface
             )
             PrimaryButton(
                 text = stringResource(Res.string.auth_facebook),
@@ -103,9 +120,31 @@ fun AuthView(onEvent: (AuthEvent) -> Unit) {
                 onClick = { onEvent(AuthEvent.FacebookAuthClicked)},
                 iconPosition = IconPosition.Start(Res.drawable.facebook_logo),
                 buttonColor = MaterialTheme.colorScheme.secondary,
-                textColor = MaterialTheme.colorScheme.onSecondary
+                textColor = MaterialTheme.colorScheme.onSurface
             )
         }
+        Spacer(modifier = Modifier.height(64.dp))
+        Row(
+            modifier = Modifier.padding(top = 24.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TertiaryText(
+                text = stringResource(Res.string.auth_terms_of_use),
+                modifier = Modifier.padding(horizontal = 24.dp),
+                color = MaterialTheme.colorScheme.onSecondary
+            )
+            VerticalDivider(
+                modifier = Modifier.height(15.dp).width(0.dp),
+                color = MaterialTheme.colorScheme.onSecondary,
+                thickness = 1.dp
+            )
+            TertiaryText(
+                text = stringResource(Res.string.auth_privacy_policy),
+                modifier = Modifier.padding(horizontal = 24.dp),
+                color = MaterialTheme.colorScheme.onSecondary
+            )
 
+        }
     }
 }
