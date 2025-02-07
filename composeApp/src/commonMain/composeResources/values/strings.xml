@@ -10,6 +10,10 @@
     <string name = "auth_forgot_password">Forgot Password?</string>
     <string name = "auth_google">Google</string>
     <string name = "auth_facebook">Facebook</string>
+    <string name = "auth_terms_of_use">Terms of Use</string>
+    <string name = "auth_privacy_policy">Privacy Policy</string>
+    <string name = "auth_email">Email</string>
+    <string name = "auth_password">Password</string>
     <string name = "chat_list_main_hint">Hello! Im ready to help you</string>
     <string name = "chat_list_secondary_hint">Ask me anything whats are on your mind. Im here to assist you!</string>
     <string name = "chat_list_start_button_text">Start now</string>
