@@ -23,7 +23,7 @@ import org.jetbrains.compose.resources.Font
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun ChatListView(chats: List<Chat>) {
+fun ChatListView(chats: List<Chat>, onCreateChatClick:() -> Unit, onDeleteChatClick:(id: Long) -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(chats) { chat ->
@@ -60,7 +60,7 @@ fun ChatListView(chats: List<Chat>) {
             }
         }
         PrimaryButton(text = stringResource(Res.string.chat_list_new_chat_text), onClick = {
-
+            onCreateChatClick()
         })
     }
 }

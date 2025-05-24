@@ -13,17 +13,17 @@ import org.koin.compose.koinInject
 
 
 @Composable
-fun ChatDetailedScreen(chatDetailedViewModel: ChatDetailedViewModel = koinInject()) {
+fun ChatDetailedScreen(navigateUp: () -> Unit, chatDetailedViewModel: ChatDetailedViewModel = koinInject()) {
     val state by chatDetailedViewModel.messagesState.collectAsStateWithLifecycle()
     when (val uiState = state) {
         is State.Error -> ErrorView()
         State.Loading -> LoadingView()
         is State.Success<List<Message>> -> ChatDetailedView(uiState.data) {
-            chatDetailedViewModel.obtainEvent(ChatDetailedViewModel.Event.OnMessageSent(it))
+            chatDetailedViewModel.obtainEvent(ChatDetailedViewModel.Event.SendMessage(chatId = 0L, text =it))
         }
 
         ChatDetailedState.EmptyChat -> EmptyChatDetailedView {
-            chatDetailedViewModel.obtainEvent(ChatDetailedViewModel.Event.OnMessageSent(it))
+            chatDetailedViewModel.obtainEvent(ChatDetailedViewModel.Event.SendMessage(chatId = 0L, text = it))
         }
     }
 }

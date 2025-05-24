@@ -4,7 +4,7 @@ import `fun`.awesome.chat.domain.models.Message
 
 interface ChatDetailedRepository {
 
-    suspend fun sendMessage(chatId: Long, text: String)
+    suspend fun sendMessage(chatId: Long, text: String): Pair<Message, Message>
 
     suspend fun getAllMessagesByChatId(chatId: Long): List<Message>
 

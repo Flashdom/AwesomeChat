@@ -1,5 +1,3 @@
-
-
 package `fun`.awesome.chat.presentation.ui.chat_list
 
 import androidx.compose.runtime.Composable
@@ -15,7 +13,7 @@ import org.koin.compose.koinInject
 
 
 @Composable
-fun ChatListScreen(chatListViewModel: ChatListViewModel = koinInject()) {
+fun ChatListScreen(navigateToMessagesList: () -> Unit, chatListViewModel: ChatListViewModel = koinInject()) {
 
     val state by chatListViewModel.chatListState.collectAsStateWithLifecycle()
 
@@ -28,11 +26,19 @@ fun ChatListScreen(chatListViewModel: ChatListViewModel = koinInject()) {
             LoadingView()
         }
 
-        is State.Success<List<Chat>> ->  {
-            ChatListView(uiState.data)
+        is State.Success<List<Chat>> -> {
+            ChatListView(
+                chats = uiState.data,
+                onCreateChatClick = {
+                    chatListViewModel.obtainEvent(ChatListViewModel.Event.CreateChat)
+                },
+                onDeleteChatClick = { chatId ->
+                    chatListViewModel.obtainEvent(ChatListViewModel.Event.DeleteChatById(chatId))
+                }
+            )
         }
 
-        ChatListState.EmptyChats ->  {
+        ChatListState.EmptyChats -> {
             ChatEmptyListView()
         }
     }

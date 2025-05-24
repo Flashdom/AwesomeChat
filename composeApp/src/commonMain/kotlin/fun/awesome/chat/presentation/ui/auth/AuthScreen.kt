@@ -15,7 +15,7 @@ import `fun`.awesome.chat.presentation.ui.showSnackbar
 import org.koin.compose.koinInject
 
 @Composable
-fun AuthScreen(viewModel: AuthViewModel = koinInject()) {
+fun AuthScreen(navigateToChatList:() -> Unit,viewModel: AuthViewModel = koinInject()) {
 
     val state by viewModel.loginState.collectAsStateWithLifecycle()
     val sideEffects = viewModel.sideEffects
