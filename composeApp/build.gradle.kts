@@ -40,7 +40,6 @@ kotlin {
     }
 
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_1_8)
         }
@@ -61,6 +60,7 @@ kotlin {
     }
 
     sourceSets {
+
         val desktopMain by getting
         androidMain.dependencies {
             implementation(compose.preview)

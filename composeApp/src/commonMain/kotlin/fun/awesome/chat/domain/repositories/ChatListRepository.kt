@@ -4,7 +4,7 @@ import `fun`.awesome.chat.domain.models.Chat
 
 interface ChatListRepository {
 
-    suspend fun createChat(): Chat
+    suspend fun createChat()
 
     suspend fun fetchChats(): List<Chat>
 
