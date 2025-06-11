@@ -28,8 +28,3 @@ actual fun settings(platformConfiguration: PlatformConfiguration): Settings {
 
 actual class PlatformConfiguration
 
-@Preview
-@Composable
-fun AuthPreview() {
-    AuthView({})
-}

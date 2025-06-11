@@ -30,9 +30,3 @@ actual fun settings(platformConfiguration: PlatformConfiguration): Settings {
 actual class PlatformConfiguration(
     val context: Context
 )
-
-@Preview
-@Composable
-fun AuthPreview() {
-    AuthView {}
-}
