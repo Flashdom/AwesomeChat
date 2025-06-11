@@ -2,6 +2,7 @@ package `fun`.awesome.chat.presentation.ui.auth
 
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -15,7 +16,7 @@ import `fun`.awesome.chat.presentation.ui.showSnackbar
 import org.koin.compose.koinInject
 
 @Composable
-fun AuthScreen(navigateToChatList:() -> Unit,viewModel: AuthViewModel = koinInject()) {
+fun AuthScreen(navigateToChatList:() -> Unit,viewModel: AuthViewModel = koinInject(), windowSizeClass: WindowSizeClass) {
 
     val state by viewModel.loginState.collectAsStateWithLifecycle()
     val sideEffects = viewModel.sideEffects
@@ -25,7 +26,7 @@ fun AuthScreen(navigateToChatList:() -> Unit,viewModel: AuthViewModel = koinInje
         AuthState.CheckingAuth -> TODO()
         is AuthState.ErrorLogging -> ErrorView()
         AuthState.Loading -> LoadingView()
-        AuthState.LoggingForm -> AuthView(onEvent = { event -> viewModel.obtainEvent(event) })
+        AuthState.LoggingForm -> AuthView(onEvent = { event -> viewModel.obtainEvent(event) }, windowSizeClass = windowSizeClass)
         is AuthState.SuccessLogging -> EmptyChatDetailedView{}
     }
 

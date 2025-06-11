@@ -90,7 +90,7 @@ kotlin {
             implementation(libs.ktor.client.content.negotiation.json)
             implementation(libs.settings)
             implementation(libs.slf4j.simple)
-
+            implementation(libs.material3.window.size)
         }
 
         wasmJsMain.dependencies {

@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -24,7 +25,8 @@ import `fun`.awesome.chat.presentation.ui.theme.AwesomeChatTheme
 @Composable
 fun App(
     navController: NavHostController = rememberNavController(),
-    onNavHostReady: suspend (NavController) -> Unit = {}
+    onNavHostReady: suspend (NavController) -> Unit = {},
+    windowSizeClass: WindowSizeClass
 ) {
     AwesomeChatTheme {
         Surface(
@@ -39,11 +41,14 @@ fun App(
                     .padding(16.dp)
             ) {
                 composable(route = Screens.AUTH.name) {
-                    AuthScreen(navigateToChatList = {
-                        navController.navigate(Screens.CHAT_LIST.name, navOptions = navOptions {
-                            popUpTo(Screens.CHAT_LIST.name)
-                        })
-                    })
+                    AuthScreen(
+                        navigateToChatList = {
+                            navController.navigate(Screens.CHAT_LIST.name, navOptions = navOptions {
+                                popUpTo(Screens.CHAT_LIST.name)
+                            })
+                        },
+                        windowSizeClass = windowSizeClass
+                    )
                 }
                 composable(route = Screens.CHAT_LIST.name) {
                     ChatListScreen(navigateToMessagesList = {
